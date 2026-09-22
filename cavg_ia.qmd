@@ -922,8 +922,6 @@ O teu é **pensar, julgar e agir.**
 
 :::
 
-<br><br>
-
 ::: {.columns}
 
 ::: {.column width="68%"}
@@ -943,7 +941,7 @@ Prof. Dr. Renan Castro Ferreira<br>
 
 :::
 
-::: {.column width="32%"}
+::: {.column width="30%"}
 
 ### 
 
