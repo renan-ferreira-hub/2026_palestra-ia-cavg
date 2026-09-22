@@ -360,7 +360,7 @@ Aqui, usamos um LLM para calcular ***surprisal***.
 
 ::: {.column width="60%"}
 
-::: {style="font-size: 150%"}
+::: {style="font-size: 120%"}
 
 ```{r}
 #| echo: true
@@ -383,7 +383,7 @@ dados <- dados %>% mutate(surprisal = as.numeric(llm))
 
 ::: {.column width="40%"}
 
-::: {style="font-size: 200%"}
+::: {style="font-size: 170%"}
 ```{r}
 dados %>% filter(posicao == 10)
 ```
