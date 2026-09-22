@@ -1,0 +1,20 @@
+# R
+.Rhistory
+.RData
+.Ruserdata
+
+# Quarto
+.quarto/
+_freeze/
+
+# Quarto generated files
+*_cache/
+*_files/
+
+# Rendered presentation files
+*.html
+*.pdf
+.Rproj.user
+
+/.quarto/
+**/*.quarto_ipynb

@@ -1,0 +1,742 @@
+/* =========================================================
+   RENAN QUARTO SLIDES
+   Personal visual layer for Quarto Reveal.js presentations
+
+   DESIGN PHILOSOPHY
+   - Minimalist / academic
+   - Left-aligned content
+   - Generous whitespace
+   - Teal as the primary accent
+   - Restrained use of secondary colors
+
+   STRUCTURE
+   1. Design system
+   2. Standard components
+   3. Special presentation components
+   ========================================================= */
+
+
+/* =========================================================
+   1. DESIGN SYSTEM
+   ---------------------------------------------------------
+   Basic visual properties used throughout the presentation.
+   Change these first when adapting the overall appearance.
+   ========================================================= */
+
+
+/* ---------- Color palette ---------- */
+
+:root {
+  --renan-accent: #107895;      /* Primary teal */
+  --renan-accent-2: #9a2515;    /* Secondary red */
+  --renan-dark: #131516;        /* Main heading color */
+  --renan-text: #202428;        /* Body text */
+  --renan-muted: #6b7280;       /* Secondary text / captions */
+  --renan-light: #f5f7f8;       /* Light background */
+}
+
+/* ---------- Accent colors ---------- */
+
+.renan-accent {
+  color: var(--renan-accent);
+}
+
+.renan-accent-2 {
+  color: var(--renan-accent-2);
+}
+
+/* ---------- General slides ---------- */
+
+/* Keep ordinary slide content left-aligned. */
+
+.reveal .slides section {
+  text-align: left;
+}
+
+
+/* Main presentation text color. */
+
+.reveal {
+  color: var(--renan-text);
+}
+
+
+/* ---------- Standard body text ---------- */
+
+/* Applies to paragraphs and bullet points on ordinary slides. */
+
+.reveal .slides section p,
+.reveal .slides section li {
+  font-size: 1.2em;
+  font-weight: 370;
+}
+
+
+/* ---------- Headings ---------- */
+
+/* h2 = main slide heading */
+
+.reveal h2 {
+  color: var(--renan-dark);
+  font-weight: 600;
+  margin-top: 0.15em;
+}
+
+
+/* h3 = secondary heading / subsection */
+
+.reveal h3 {
+  color: var(--renan-accent);
+  font-weight: 600;
+  margin-top: 0.15em;
+}
+
+
+/* ---------- Utility text sizes ---------- */
+
+/*
+   QMD usage:
+
+   ::: {.small}
+   Small text
+   :::
+
+   ::: {.big}
+   Large text
+   :::
+*/
+
+.reveal .small {
+  font-size: 0.72em;
+}
+
+.reveal .big {
+  font-size: 1.35em;
+}
+
+
+/* Show indicator when a slide has unrevealed fragments */
+section .fragment:not(.visible) ~ * {
+  /* This won't work directly, so use a different approach */
+}
+
+/* Better: target slides that contain at least one non-visible fragment */
+section.has-fragments::after {
+  content: "•";
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  font-size: 60px;
+  color: rgba(200, 100, 100, 0.6);
+  opacity: 0.5;
+}
+
+
+/* =========================================================
+   2. STANDARD COMPONENTS
+   ---------------------------------------------------------
+   Reusable elements that can appear in many presentations.
+   These form the core of the Renan presentation style.
+   ========================================================= */
+
+
+/* =========================================================
+   2.1 TITLE SLIDE
+   ---------------------------------------------------------
+   The standard Quarto title slide.
+
+   The title slide also contains the UFPEL and Laplimm
+   logos, positioned in the bottom-right corner.
+   ========================================================= */
+
+
+/* ---------- Title slide alignment ---------- */
+
+#title-slide {
+  text-align: left;
+}
+
+
+/* ---------- Title ---------- */
+
+#title-slide .title {
+  font-size: 2.2em;
+  font-weight: 650;
+  line-height: 1.05;
+  color: var(--renan-dark);
+  max-width: 88%;
+  margin-bottom: 0.35em;
+}
+
+
+/* ---------- Subtitle ---------- */
+
+#title-slide .subtitle {
+  font-size: 1.7em;
+  font-weight: 350;
+  line-height: 1.35;
+  color: var(--renan-muted);
+  max-width: 75%;
+  margin-top: 0;
+  margin-bottom: 5.5em;
+}
+
+
+/* ---------- Author ---------- */
+
+#title-slide .quarto-title-author-name {
+  font-size: 1.2em;
+  line-height: 1.3;
+  color: var(--renan-text);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+/* ---------- Affiliation ---------- */
+
+#title-slide .quarto-title-affiliation {
+  font-size: 0.9em;
+  line-height: 1.3;
+  color: var(--renan-muted);
+  margin-top: 0.15em;
+  margin-bottom: 0;
+}
+
+
+/* ---------- Date ---------- */
+
+#title-slide .date {
+  margin-top: 2.5em;
+  font-size: 0.6em;
+}
+
+
+/* ---------- Title slide logos ---------- */
+
+/*
+   The logos are implemented as pseudo-elements so they do
+   not need to be added manually to every presentation.
+
+   Logo files:
+   images/logo_UFPEL.png
+   images/logo_Laplimm.png
+*/
+
+#title-slide::before,
+#title-slide::after {
+  content: "";
+  position: absolute;
+
+  bottom: 1%;
+  right: 1%;
+
+  width: 320px;
+  height: 290px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 90% auto;
+
+  opacity: 0.7;
+}
+
+
+/* UFPEL logo */
+
+#title-slide::before {
+  right: 305px;
+  background-image: url("images/logo_UFPEL.png");
+}
+
+
+/* Laplimm logo */
+
+#title-slide::after {
+  right: 0;
+  background-image: url("images/logo_Laplimm.png");
+}
+
+
+/* =========================================================
+   2.2 SECTION DIVIDER
+   ---------------------------------------------------------
+   QMD usage:
+
+   # Introduction {.section-slide}
+
+   Creates a light-background divider slide with a large
+   heading and a teal horizontal line.
+   ========================================================= */
+
+.reveal .section-slide {
+  background: #f1f7f8 !important;
+  color: var(--renan-dark);
+}
+
+
+/* Section title */
+
+.reveal .section-slide h1 {
+  font-size: 2.6em;
+  font-weight: 550;
+  line-height: 1.05;
+  color: var(--renan-dark);
+  margin: 0;
+}
+
+
+/* Teal line underneath the section title */
+
+.reveal .section-slide h1::after {
+  content: "";
+  display: block;
+  width: 1200px;
+  height: 4px;
+  margin-top: 0.5em;
+  background: var(--renan-accent);
+}
+
+
+/* =========================================================
+   2.3 TAKEAWAY
+   ---------------------------------------------------------
+   QMD usage:
+
+   ::: {.takeaway}
+
+   Your main takeaway goes here.
+
+   :::
+
+   Used for emphasizing an important conclusion or message.
+   ========================================================= */
+
+.reveal .takeaway {
+  margin-top: 0.8em;
+  max-width: 85%;
+  font-size: 1.5em;
+  line-height: 1.35;
+}
+
+
+/* Label above the takeaway */
+
+.reveal .takeaway::before {
+  content: "";
+  display: block;
+  margin-bottom: 0.8em;
+  font-size: 0.45em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--renan-accent);
+}
+
+
+/* =========================================================
+   2.4 QUESTION
+   ---------------------------------------------------------
+   QMD usage:
+
+   ::: {.question}
+
+   Your question goes here.
+
+   :::
+
+   Used for framing a research question or conceptual
+   problem.
+   ========================================================= */
+
+.reveal .question {
+  margin-top: 0.8em;
+  max-width: 85%;
+  font-size: 1.5em;
+  line-height: 1.35;
+}
+
+
+/* Label above the question */
+
+.reveal .question::before {
+  content: "";
+  display: block;
+  margin-bottom: 0.8em;
+  font-size: 0.45em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--renan-accent-2);
+}
+
+
+/* =========================================================
+   2.5 DARK SLIDE
+   ---------------------------------------------------------
+   QMD usage:
+
+   ## A dark slide {.dark-slide}
+
+   Creates a dark-background slide with white text.
+   ========================================================= */
+
+.reveal .dark-slide {
+  background: var(--renan-dark) !important;
+  color: white;
+}
+
+
+/* Ensure all common text elements are white. */
+
+.reveal .dark-slide h1,
+.reveal .dark-slide h2,
+.reveal .dark-slide h3,
+.reveal .dark-slide p,
+.reveal .dark-slide li {
+  color: white;
+}
+
+
+/* =========================================================
+   2.6 TABLES
+   ---------------------------------------------------------
+   QMD usage:
+
+   ## Comparing the groups {.table-slide}
+
+   ::: {.table-block}
+
+   | Group | N |
+   |-------|--:|
+   | English | 30 |
+
+   :::
+
+   The table is kept compact and centered.
+   ========================================================= */
+
+
+/* ---------- Table container ---------- */
+
+.reveal .table-slide .table-block {
+  width: fit-content;
+  margin: 2em auto 0;
+}
+
+
+/* ---------- Table ---------- */
+
+.reveal .table-slide .table-block table {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+/* ---------- Table cell padding ---------- */
+
+.reveal .table-slide .table-block table td,
+.reveal .table-slide .table-block table th {
+  padding: 12px 65px !important;
+}
+
+/* ---------- Table note ---------- */
+
+/*
+   QMD usage:
+
+   ::: {.table-note}
+   Note. Explanation of the table.
+   :::
+*/
+
+.reveal .table-slide .table-note {
+  margin: 0.35em 0 0;
+  font-size: 0.75em;
+  line-height: 1.3;
+  color: var(--renan-muted);
+  text-align: left;
+}
+
+
+/* =========================================================
+   2.7 FIGURES
+   ---------------------------------------------------------
+   Standard Markdown figures.
+
+   Figures are centered and constrained so that they do not
+   overwhelm the slide.
+   ========================================================= */
+
+
+/* ---------- Figure ---------- */
+
+.reveal .slides section > figure {
+  width: 100%;
+  margin: 0.8em auto 0;
+  text-align: center;
+}
+
+.reveal .slides section > figure img {
+  display: block;
+  width: 90%;
+  max-height: 65vh;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+
+/* ---------- Figure caption ---------- */
+
+.reveal .slides section figcaption {
+  font-size: 0.85em;
+  line-height: 1.3;
+  color: var(--renan-muted);
+  text-align: center;
+  margin-top: 0.2em;
+}
+
+
+/* =========================================================
+   2.8 R-GENERATED FIGURES
+   ---------------------------------------------------------
+   Applies to plots generated by R/knitr.
+
+   Keeps R plots centered and gives them approximately the
+   same dimensions as ordinary figures.
+   ========================================================= */
+
+.reveal .cell-output-display {
+  margin-top: 0.8em;
+  text-align: center;
+}
+
+.reveal .cell-output-display img {
+  display: block;
+  width: 90%;
+  max-height: 65vh;
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   2.9 QUOTATIONS
+   ---------------------------------------------------------
+   QMD usage:
+
+   ::: {.quote}
+
+   > Your quotation goes here.
+
+   ::: {.quote-source}
+   — Author, Year
+   :::
+
+   Creates a large quotation with a teal vertical line.
+   ========================================================= */
+
+.reveal .quote {
+  max-width: 85%;
+  margin: 3.5em auto 0;
+  text-align: left;
+}
+
+
+/* Quotation text */
+
+.reveal .quote blockquote {
+  width: 100%;
+  margin: 0;
+  padding: 0.3em 0 0.3em 1em;
+
+  border-left: 5px solid var(--renan-accent);
+  box-shadow: none;
+
+  font-size: 1.35em;
+  line-height: 1.4;
+  font-style: italic;
+  color: var(--renan-text);
+}
+
+
+/* Citation / source */
+
+.reveal .quote-source {
+  margin-top: 0.8em;
+  margin-left: 1.7em;
+  font-size: 0.95em;
+  line-height: 1.3;
+  color: var(--renan-muted);
+}
+
+
+/* =========================================================
+   3. SPECIAL PRESENTATION COMPONENTS
+   ---------------------------------------------------------
+   Less frequently used components for particular types of
+   slides.
+
+   These are still part of the personal template, but they
+   are not intended to be used on every presentation.
+   ========================================================= */
+
+
+/* =========================================================
+   3.1 LARGE IMAGE
+   ---------------------------------------------------------
+   QMD usage:
+
+   ## Experimental design
+
+   ::: {.image-slide}
+
+   ![](image.png)
+
+   :::
+
+   Used when an image should be prominent but should NOT
+   fill the entire slide.
+   ========================================================= */
+
+.reveal .image-slide {
+  width: 100%;
+  text-align: center;
+  margin-top: 1.8em;
+}
+
+.reveal .image-slide img {
+  display: block;
+  width: 120%;
+  max-height: 80vh;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   3.2 FULL-SCREEN / HERO IMAGE
+   ---------------------------------------------------------
+   QMD usage:
+
+   ## The experiment {.hero-slide}
+
+   ![](stimulus.png)
+
+   Hides the heading and makes the image fill the slide.
+   ========================================================= */
+
+.reveal .hero-slide {
+  padding: 0 !important;
+}
+
+
+/* Hide the slide heading */
+
+.reveal .hero-slide h2 {
+  display: none;
+}
+
+
+/* Make the image container fill the slide */
+
+.reveal .hero-slide > p {
+  position: absolute;
+  inset: 0;
+
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* Make the image fill the container */
+
+.reveal .hero-slide > p img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  max-width: none;
+  max-height: none;
+
+  margin: 0;
+
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   3.3 CODE + OUTPUT
+   ---------------------------------------------------------
+   QMD usage:
+
+   ## Summarising the data {.code-output-slide}
+
+   ```{r}
+   #| echo: true
+
+   ...
+   Displays the code on the left and the resulting output
+on the right.
+
+Approximate layout:
+45% code | 55% output
+========================================================= */
+
+.reveal .code-output-slide .cell {
+display: grid;
+grid-template-columns: 40% 55%;
+gap: 5%;
+align-items: start;
+margin-top: 1em;
+}
+
+/* ---------- Code panel ---------- */
+
+.reveal .code-output-slide .cell .sourceCode {
+margin: 0;
+font-size: 0.9em;
+overflow-x: auto;
+}
+
+/* ---------- Output panel ---------- */
+
+.reveal .code-output-slide .cell .cell-output {
+margin: 0;
+padding: 0.5em;
+font-size: 1.7em;
+}
+
+/* ---------- AI flowchart ---------- */
+
+.ai-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  margin-top: 1.5em;
+  width: 100%;
+}
+
+.ai-flow-box {
+  border: 3px solid var(--renan-accent);
+  border-radius: 12px;
+  padding: 0.8em 1em;
+  font-size: 1.4em;
+  font-weight: 700;
+  text-align: center;
+  color: var(--renan-accent-2);
+  background: white;
+  line-height: 1.2;
+  min-width: 250px;
+}
+
+.ai-flow-arrow {
+  font-size: 2em;
+  font-weight: 700;
+  color: var(--renan-accent);
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}

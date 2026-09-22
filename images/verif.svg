@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <style>
+      .title-category { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 32px; font-weight: 800; letter-spacing: 2px; }
+      .text-item { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 24px; font-weight: 700; fill: #0F172A; }
+      .text-desc { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 18px; font-weight: 400; fill: #475569; }
+      .text-axis-large { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 26px; font-weight: 800; fill: #0F172A; letter-spacing: 2px; }
+      .text-main-msg { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 30px; font-weight: 700; fill: #0F172A; }
+    </style>
+
+    <!-- Gradientes -->
+    <linearGradient id="riskGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#CBD5E1" />
+      <stop offset="50%" stop-color="#FCA5A5" />
+      <stop offset="100%" stop-color="#991B1B" />
+    </linearGradient>
+
+    <linearGradient id="verifyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94A3B8" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo Branco -->
+  <rect width="1920" height="1080" fill="#FFFFFF" />
+
+  <!-- Mensagem Principal / Título Integrado -->
+  <text x="960" y="100" class="text-main-msg" text-anchor="middle">Quanto maior o custo de um erro, maior deve ser a verificação humana.</text>
+
+  <!-- Categorias do Eixo -->
+  <text x="250" y="200" class="title-category" fill="#475569" text-anchor="start">BAIXO RISCO</text>
+  <text x="960" y="200" class="title-category" fill="#991B1B" text-anchor="middle">RISCO MODERADO</text>
+  <text x="1670" y="200" class="title-category" fill="#7F1D1D" text-anchor="end">ALTO RISCO</text>
+
+  <!-- Barra de Continuum -->
+  <rect x="150" y="500" width="1620" height="36" rx="18" fill="url(#riskGrad)" />
+
+  <!-- Exemplos Distribuidos com Fontes Grandes (Alternados acima e abaixo da barra) -->
+  
+  <!-- Baixo Risco -->
+  <g transform="translate(250, 480)">
+    <line x1="0" y1="0" x2="0" y2="-180" stroke="#94A3B8" stroke-width="2" stroke-dasharray="6,6" />
+    <circle cx="0" cy="38" r="8" fill="#475569" />
+    <text x="0" y="-200" class="text-item" text-anchor="middle">Brainstorm de ideias</text>
+  </g>
+
+  <g transform="translate(480, 550)">
+    <line x1="0" y1="0" x2="0" y2="120" stroke="#94A3B8" stroke-width="2" stroke-dasharray="6,6" />
+    <circle cx="0" cy="-32" r="8" fill="#475569" />
+    <text x="0" y="155" class="text-item" text-anchor="middle">Reformulação de texto</text>
+  </g>
+
+  <g transform="translate(710, 480)">
+    <line x1="0" y1="0" x2="0" y2="-180" stroke="#94A3B8" stroke-width="2" stroke-dasharray="6,6" />
+    <circle cx="0" cy="38" r="8" fill="#475569" />
+    <text x="0" y="-200" class="text-item" text-anchor="middle">Criação de exemplos</text>
+  </g>
+
+  <!-- Risco Moderado -->
+  <g transform="translate(960, 550)">
+    <line x1="0" y1="0" x2="0" y2="120" stroke="#64748B" stroke-width="2" stroke-dasharray="6,6" />
+    <circle cx="0" cy="-32" r="8" fill="#334155" />
+    <text x="0" y="155" class="text-item" text-anchor="middle">Explicação de conceitos</text>
+  </g>
+
+  <g transform="translate(1180, 480)">
+    <line x1="0" y1="0" x2="0" y2="-180" stroke="#64748B" stroke-width="2" stroke-dasharray="6,6" />
+    <circle cx="0" cy="38" r="8" fill="#334155" />
+    <text x="0" y="-200" class="text-item" text-anchor="middle">Resumo de conteúdo</text>
+  </g>
+
+  <g transform="translate(1380, 550)">
+    <line x1="0" y1="0" x2="0" y2="120" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,6" />
+    <circle cx="0" cy="-32" r="8" fill="#991B1B" />
+    <text x="0" y="155" class="text-item" text-anchor="middle">Informação factual</text>
+  </g>
+
+  <!-- Alto Risco -->
+  <g transform="translate(1550, 480)">
+    <line x1="0" y1="0" x2="0" y2="-180" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,6" />
+    <circle cx="0" cy="38" r="8" fill="#991B1B" />
+    <text x="0" y="-200" class="text-item" fill="#7F1D1D" text-anchor="middle">Referências bibliográficas</text>
+  </g>
+
+  <g transform="translate(1700, 550)">
+    <line x1="0" y1="0" x2="0" y2="120" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,6" />
+    <circle cx="0" cy="-32" r="8" fill="#991B1B" />
+    <text x="0" y="155" class="text-item" fill="#7F1D1D" text-anchor="middle">Análise de dados &amp; Decisões</text>
+  </g>
+
+  <!-- Verificação Necessária (Eixo Inferior em Destaque) -->
+  <g transform="translate(150, 820)">
+    <polygon points="0,40 1620,0 1620,50 0,50" fill="url(#verifyGrad)" />
+    <text x="810" y="100" class="text-axis-large" text-anchor="middle">NÍVEL DE VERIFICAÇÃO HUMANA NECESSÁRIA ▲</text>
+  </g>
+
+</svg>

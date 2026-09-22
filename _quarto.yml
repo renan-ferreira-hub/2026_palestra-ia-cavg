@@ -1,0 +1,19 @@
+project:
+  type: default
+
+format:
+  clean-revealjs:
+    navigation-mode: vertical
+    controls: true
+    controls-tutorial: true
+    slide-number: true
+    progress: true
+    history: true
+    hash-type: title
+    transition: slide
+    background-transition: fade
+    center: false
+    width: 1600
+    height: 900
+    css: renan.css
+    include-after-body: presenter.html
